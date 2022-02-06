@@ -6,7 +6,7 @@ import './App.css';
 
 class App extends Component {
   constructor() {
-    super()
+    super();
     this.state = {
       robots: [],
       searchfield: ''
@@ -20,20 +20,21 @@ class App extends Component {
   }
 
   onSearchChange = (event) => {
-    this.setState({ searchfield: event.target.value })
+    this.setState({ searchfield: event.target.value });
   }
 
   render() {
     const { robots, searchfield } = this.state;
-    const filteredRobots = robots.filter(robot =>{
+    const filteredRobots = robots.filter(robot => {
       return robot.name.toLowerCase().includes(searchfield.toLowerCase());
     })
     return !robots.length ?
       <h1>Loading</h1> :
       (
         <div className='tc'>
-          <h1 className='f1'>RoboFriends</h1>
+          <h1 className='f-subheadline'>RoboFriends</h1>
           <SearchBox searchChange={this.onSearchChange}/>
+          <br/>
           <Scroll>
             <CardList robots={filteredRobots} />
           </Scroll>
